@@ -115,8 +115,8 @@ claim that the weights are online if they are not.
 
 > The source code, the preprocessing pipeline, the exact data splits, the configuration files and
 > the trained weights of all reported experiments are publicly available at
-> `https://github.com/<user>/SCLA-Net` and have been archived on Zenodo
-> (DOI `10.5281/zenodo.XXXXXXX`). The Zenodo record contains the checkpoints of the eleven
+> `https://github.com/XiangruW/SCLA-Net` and have been archived on Zenodo
+> (DOI `10.5281/zenodo.22706035`). The Zenodo record contains the checkpoints of the eleven
 > experiments (BTCV13, the ten MSD tasks and the ablation variants), together with `config.yaml`
 > files that fully specify each run and SHA-256 checksums.
 
@@ -124,8 +124,8 @@ claim that the weights are online if they are not.
 revision time; state the reason and give a concrete timeline.
 
 > The source code, the preprocessing pipeline, the exact data splits and the configuration files
-> are publicly available at `https://github.com/<user>/SCLA-Net` (archived on Zenodo, DOI
-> `10.5281/zenodo.XXXXXXX`). The trained weights are being prepared for release; in the meantime
+> are publicly available at `https://github.com/XiangruW/SCLA-Net` (archived on Zenodo, DOI
+> `10.5281/zenodo.22706035`). The trained weights are being prepared for release; in the meantime
 > they are available from the corresponding author on reasonable request, and the released
 > training script (`scripts/train_all.py`) reproduces every checkpoint with the reported
 > hyper-parameters.
@@ -134,7 +134,7 @@ revision time; state the reason and give a concrete timeline.
 say so plainly instead of promising weights that are not there.
 
 > The complete implementation, preprocessing pipeline, exact data splits, hyper-parameters and
-> configuration files are publicly available at `https://github.com/<user>/SCLA-Net`. Since the
+> configuration files are publicly available at `https://github.com/XiangruW/SCLA-Net`. Since the
 > training data (BTCV13 and the MSD tasks) cannot be redistributed with the code, we provide the
 > full training protocol and the deterministic data splits so that the results can be reproduced;
 > trained weights will be released with the final version of the paper.
@@ -148,8 +148,8 @@ The matching statement for the manuscript itself:
 
 > **Code availability.** The software, the preprocessing pipeline, the exact data splits and the
 > configuration files that implement and reproduce the results reported in this paper are openly
-> available at `https://github.com/<user>/SCLA-Net` and have been archived on Zenodo
-> (DOI `10.5281/zenodo.XXXXXXX`). The trained model weights are available from the corresponding
+> available at `https://github.com/XiangruW/SCLA-Net` and have been archived on Zenodo
+> (DOI `10.5281/zenodo.22706035`). The trained model weights are available from the corresponding
 > author on reasonable request.
 
 ---
@@ -157,9 +157,9 @@ The matching statement for the manuscript itself:
 ## 7. Suggested reply to the reviewer
 
 > We have released the complete implementation of SCLA-Net, together with the preprocessing
-> pipeline, the exact data splits, the hyper-parameter and configuration files, and the trained
-> weights. The code is available at `https://github.com/<user>/SCLA-Net` and has been archived on
-> Zenodo with the DOI `10.5281/zenodo.XXXXXXX`. The repository contains: (i) the implementation of
+> pipeline, the exact data splits, and the hyper-parameter and configuration files. The code is
+> available at `https://github.com/XiangruW/SCLA-Net` and has been archived on Zenodo with the DOI
+> `10.5281/zenodo.22706035` (v1.0.2). The repository contains: (i) the implementation of
 > the lightweight backbone, SCEA, SALT and LGCA, and the localization-aware loss; (ii) the
 > preprocessing pipeline (RAS reorientation, optional resampling, HU clipping to [-175, 250] and
 > min-max normalization) together with the per-task intensity settings for the ten MSD tasks;

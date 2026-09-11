@@ -1,5 +1,8 @@
 # SCLA-Net
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22706035.svg)](https://doi.org/10.5281/zenodo.22706035)
+[![Licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
+
 Official implementation of
 
 > **SCLA-Net: A Lightweight Structure-aware Context and Localization Aggregation Network

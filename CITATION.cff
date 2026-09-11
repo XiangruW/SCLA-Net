@@ -26,6 +26,10 @@ keywords:
   - attention
   - BTCV
   - Medical Segmentation Decathlon
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22706035
+    description: "Zenodo archive of this repository (v1.0.2)"
 repository-code: "https://github.com/XiangruW/SCLA-Net"
 preferred-citation:
   type: article
