@@ -1,0 +1,9 @@
+# Core dependencies of SCLA-Net.
+# PyTorch: install the wheel matching your CUDA version, e.g.
+#   pip install torch --index-url https://download.pytorch.org/whl/cu121
+torch>=2.0
+numpy>=1.23
+scipy>=1.10
+nibabel>=5.0
+PyYAML>=6.0
+tqdm>=4.60

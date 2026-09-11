@@ -1,0 +1,124 @@
+# ============================================================================ #
+# SCLA-Net on the ten Medical Segmentation Decathlon (MSD) tasks.
+#
+# Common settings are listed at the top level; per-task settings (label
+# definitions, number of input modalities, intensity preprocessing) live in
+# the `tasks` section and are merged automatically by
+# `sclanet.utils.resolve_task_config`.
+#
+#   python train.py --config configs/msd.yaml --task task03_liver
+# ============================================================================ #
+experiment: msd
+variant: all
+seed: 0
+
+data:
+  # raw_dir contains the extracted MSD task folders, e.g.
+  #   <raw_dir>/Task03_Liver/imagesTr/*.nii.gz
+  raw_dir: data/raw/MSD
+  preprocessed: data/preprocessed/msd
+  split_dir: splits
+  patch_size: [96, 96, 96]
+  spacing: null
+  val_ratio: 0.2
+  augment:
+    flip_p: 0.1
+    rot90_p: 0.1
+    intensity_shift_p: 0.5
+    intensity_shift_sigma: 0.1
+    affine_p: 0.1
+    affine_rot_max: 0.1047197551
+    affine_scale: [0.9, 1.1]
+
+model:
+  encoder_channels: [48, 96, 192, 384]
+  decoder_channels: [256, 128, 64, 48]
+  bottleneck_channels: 512
+  blocks_per_stage: 2
+  num_tokens: 16
+  token_dim: 256
+  scea_reduction: 16
+  scea_bottleneck_reduction: 4
+  scea_attn_grid: 8
+  salt_kwargs:
+    tau: 0.3
+    sigma: 2.0
+    alpha: 0.5
+    radius: 1
+    hidden: 64
+
+loss:
+  lambda_loc: 0.5
+  target: gaussian
+  target_sigma: 1.0
+
+train:
+  iterations: 40000
+  batch_size: 2
+  optimizer: adamw
+  lr: 1.0e-4
+  weight_decay: 1.0e-5
+  amp: true
+  num_workers: 4
+  val_interval: 500
+  val_batch_size: 1
+
+inference:
+  window: [96, 96, 96]
+  overlap: 0.5
+  tta: false
+
+# --------------------------------------------------------------------------- #
+# per-task settings
+# --------------------------------------------------------------------------- #
+tasks:
+
+  task01_braintumour:
+    data: {intensity: percentile, percentile: [0.5, 99.5]}
+    model: {in_channels: 4, num_classes: 4}
+    regions: {WT: [1, 2, 3], TC: [2, 3], NET: [2]}
+
+  task02_heart:
+    data: {intensity: percentile, percentile: [0.5, 99.5]}
+    model: {in_channels: 1, num_classes: 2}
+    regions: {Heart: [1]}
+
+  task03_liver:
+    data: {intensity: hu, hu_window: [-175, 250]}
+    model: {in_channels: 1, num_classes: 3}
+    regions: {Liver: [1], Cancer: [2]}
+
+  task04_hippocampus:
+    data: {intensity: percentile, percentile: [0.5, 99.5]}
+    model: {in_channels: 1, num_classes: 3}
+    regions: {Ant: [1], Post: [2]}
+
+  task05_prostate:
+    data: {intensity: percentile, percentile: [0.5, 99.5]}
+    model: {in_channels: 2, num_classes: 3}
+    regions: {PZ: [1], TZ: [2]}
+
+  task06_lung:
+    data: {intensity: hu, hu_window: [-1000, 400]}
+    model: {in_channels: 1, num_classes: 2}
+    regions: {Cancer: [1]}
+
+  task07_pancreas:
+    data: {intensity: hu, hu_window: [-175, 250]}
+    model: {in_channels: 1, num_classes: 3}
+    regions: {Pan: [1], Cancer: [2]}
+
+  task08_hepaticvessel:
+    data: {intensity: hu, hu_window: [-175, 250]}
+    model: {in_channels: 1, num_classes: 3}
+    regions: {Vessel: [1], Tumour: [2]}
+
+  task09_spleen:
+    data: {intensity: hu, hu_window: [-175, 250]}
+    model: {in_channels: 1, num_classes: 2}
+    regions: {Spleen: [1]}
+
+  task10_colon:
+    data: {intensity: hu, hu_window: [-175, 250]}
+    model: {in_channels: 1, num_classes: 2}
+    regions: {Colon: [1]}

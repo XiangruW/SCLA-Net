@@ -1,0 +1,31 @@
+{
+  "title": "SCLA-Net: Structure-aware Context and Localization Aggregation Network for 3D Medical Image Segmentation",
+  "description": "<p>Official implementation of SCLA-Net, a lightweight 3D medical image segmentation network combining a depthwise-separable encoder-decoder backbone with (i) Structural Context Enhanced Attention (SCEA), which extracts complementary structural context along three orthogonal anatomical directions, (ii) a Structure-aware Localization Token Generator (SALT), which selects diverse anatomical centers and aggregates local features into localization tokens, and (iii) Localization-guided Cross Attention (LGCA), which uses these tokens as anatomically grounded queries.</p><p>The release contains the full training and inference code, the preprocessing pipeline (RAS reorientation, optional resampling, CT clipping to [-175, 250] HU, min-max normalization), the exact train/validation split files for BTCV13 (24/6) and for the ten Medical Segmentation Decathlon tasks (deterministic 80/20 split), the hyper-parameter and configuration files, and the trained weights.</p><p>The datasets themselves are not redistributed: BTCV13 is available from Synapse (syn3193805) under the Synapse Terms and Conditions of Use and the Medical Segmentation Decathlon from medicaldecathlon.com under CC BY-SA 4.0.</p>",
+  "creators": [
+    {"name": "Wang, Xiangru", "affiliation": "Shenyang University of Technology"},
+    {"name": "Zang, Chuanzhi", "affiliation": "Shenyang University of Technology"},
+    {"name": "Wang, Xinxin", "affiliation": "Liaoning Dinghan Qihui Electronic System Engineering Co."},
+    {"name": "Tian, Yetian", "affiliation": "Liaoning Dinghan Qihui Electronic System Engineering Co."},
+    {"name": "Zhang, Zhijia", "affiliation": "Shenyang University of Technology"},
+    {"name": "Han, Xiaoming", "affiliation": "Liaoning Dinghan Qihui Electronic System Engineering Co."}
+  ],
+  "upload_type": "software",
+  "license": "MIT",
+  "access_right": "open",
+  "keywords": [
+    "medical image segmentation",
+    "3D segmentation",
+    "lightweight neural network",
+    "attention mechanism",
+    "BTCV",
+    "Medical Segmentation Decathlon"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "Medical & Biological Engineering & Computing",
+      "resource_type": "publication-article"
+    }
+  ],
+  "language": "eng"
+}

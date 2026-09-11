@@ -1,0 +1,76 @@
+# ============================================================================ #
+# SCLA-Net on BTCV13 (13 abdominal organs + background)
+# Values follow the "Experimental Setup" section of the manuscript.
+# ============================================================================ #
+experiment: btcv13
+variant: all           # all | scea | salt | lgca | baseline (component ablation)
+seed: 0
+
+data:
+  # raw_dir points to the extracted Synapse BTCV training set:
+  #   <raw_dir>/img0001.nii.gz, <raw_dir>/label0001.nii.gz, ...
+  raw_dir: data/raw/BTCV
+  # directory produced by `scripts/prepare_data.py`
+  preprocessed: data/preprocessed/btcv13
+  split_dir: splits
+  num_classes: 14
+  num_organs: 13
+  patch_size: [96, 96, 96]
+  # intensity preprocessing: clip to [-175, 250] HU then min-max to [0, 1]
+  intensity: hu
+  hu_window: [-175, 250]
+  # `null` keeps the native voxel spacing; e.g. [1.0, 1.0, 1.0] resamples
+  spacing: null
+  augment:
+    flip_p: 0.1
+    rot90_p: 0.1
+    intensity_shift_p: 0.5
+    intensity_shift_sigma: 0.1
+    affine_p: 0.1
+    affine_rot_max: 0.1047197551   # pi / 30
+    affine_scale: [0.9, 1.1]
+
+model:
+  in_channels: 1
+  num_classes: 14
+  encoder_channels: [48, 96, 192, 384]
+  decoder_channels: [256, 128, 64, 48]
+  bottleneck_channels: 512
+  blocks_per_stage: 2
+  num_tokens: 16                 # K
+  token_dim: 256                 # dimensionality of each localization token
+  scea_reduction: 16             # reduction ratio in the encoder/decoder stages
+  scea_bottleneck_reduction: 4   # reduction ratio at the bottleneck
+  scea_attn_grid: 8
+  salt_kwargs:
+    tau: 0.3                     # candidate pool threshold
+    sigma: 2.0                   # spatial weighting range
+    alpha: 0.5                   # weight of the local structural variation
+    radius: 1                    # 3x3x3 aggregation neighbourhood
+    hidden: 64
+
+loss:
+  lambda_loc: 0.5                # weight of the localization-aware loss
+  target: gaussian               # anatomical importance target map H
+  target_sigma: 1.0
+
+train:
+  iterations: 40000
+  batch_size: 2
+  # micro-batches accumulated per optimizer step; increase this (and/or lower
+  # batch_size) when the GPU memory is small, e.g. 2 micro-batches of 1 on 8 GB
+  grad_accum_steps: 1
+  optimizer: adamw
+  lr: 1.0e-4
+  weight_decay: 1.0e-5
+  amp: true
+  num_workers: 4
+  val_interval: 500
+  val_batch_size: 1
+  ckpt_dir: checkpoints/btcv13
+  log_dir: logs/btcv13
+
+inference:
+  window: [96, 96, 96]
+  overlap: 0.5                   # averaging of overlapping predictions
+  tta: false

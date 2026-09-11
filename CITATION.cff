@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper and the archived software release."
+title: "SCLA-Net: Structure-aware Context and Localization Aggregation Network for 3D Medical Image Segmentation"
+type: software
+authors:
+  - family-names: Wang
+    given-names: Xiangru
+    email: rxiang527@gmail.com
+  - family-names: Zang
+    given-names: Chuanzhi
+  - family-names: Wang
+    given-names: Xinxin
+  - family-names: Tian
+    given-names: Yetian
+  - family-names: Zhang
+    given-names: Zhijia
+  - family-names: Han
+    given-names: Xiaoming
+license: MIT
+version: 1.0.0
+date-released: "2026-09-11"
+keywords:
+  - medical image segmentation
+  - 3D segmentation
+  - lightweight network
+  - attention
+  - BTCV
+  - Medical Segmentation Decathlon
+repository-code: "https://github.com/XiangruW/SCLA-Net"
+preferred-citation:
+  type: article
+  title: "SCLA-Net: A Lightweight Structure-aware Context and Localization Aggregation Network for 3D Medical Image Segmentation"
+  authors:
+    - family-names: Wang
+      given-names: Xiangru
+    - family-names: Zang
+      given-names: Chuanzhi
+    - family-names: Wang
+      given-names: Xinxin
+    - family-names: Tian
+      given-names: Yetian
+    - family-names: Zhang
+      given-names: Zhijia
+    - family-names: Han
+      given-names: Xiaoming
+  journal: "Medical & Biological Engineering & Computing"
+  year: 2026

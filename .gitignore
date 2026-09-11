@@ -1,0 +1,24 @@
+# data and artefacts (datasets are downloaded separately, weights live on Zenodo)
+data/
+checkpoints/
+logs/
+predictions/
+*.nii
+*.nii.gz
+*.npy
+*.pth
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# editors / os
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
