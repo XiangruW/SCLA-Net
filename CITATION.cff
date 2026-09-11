@@ -17,7 +17,7 @@ authors:
   - family-names: Han
     given-names: Xiaoming
 license: MIT
-version: 1.0.0
+version: v1.0.0
 date-released: "2026-09-11"
 keywords:
   - medical image segmentation
